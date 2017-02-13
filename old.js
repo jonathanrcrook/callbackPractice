@@ -23,26 +23,25 @@ and what you should write is the sayHi function that makes the code above work,
 // 1. Write a function called first that returns the first item of the array using a callback function
 
   // Code Here
-  function first (arr, cb) {
-    var string = arr[0]
-    cb(string)
-    return string
+  function first(arr, func) {
+    return func(arr[0]);
   }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 first(names, function(firstName){
   console.log('The first name in names is ' + firstName)
 });
-
+// first(names, function(firstName) {
+//   console.log("Now the name is ", firstName + "jobob");
+// });
 
 
 // 2. Write a function called last which returns the last item of the array using a callback function.
 
   //Code Here
-  function last (arr, cb) {
-    var string = arr[arr.length-1]
-    cb(string)
-    return string
+  function last(arr, func) {
+    return func(arr[arr.length - 1]);
   }
 
 last(names, function(lastName){
@@ -52,13 +51,10 @@ last(names, function(lastName){
 
 
 // 3. Write a function called multiply that multiplies two numbers using a callback function.
-
   //Code Here
-
-  function multiply(num1, num2, cb) {
-    cb(num1 * num2)
-  }
-
+function multiply(num1, num2, func) {
+func(num1 * num2)
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -71,8 +67,8 @@ multiply(4, 3, function(answer){
 
   //Code Here
 
-  function contains(arr, name, cb) {
-    cb(arr.indexOf(name)!== -1)
+  function contains(arr, str, cb) {
+    cb(arr.indexOf(str)!==-1)
   }
 
 contains(names, 'Colt', function(result){
@@ -89,14 +85,14 @@ contains(names, 'Colt', function(result){
 // the callback function with the array of unique names.
 
     //Code Here
-
-    function uniq(arr, cb) {
-      newArr = [];
+    function uniq(arr, func) {
+        newArr = [];
       arr.map( function (x) {
-        if (newArr.indexOf[x] === -1)
-        newArr.push(x);
+        if (newArr.indexOf(x) === -1) {
+          newArr.push(x);
+        }
       });
-        return newArr;
+      return func(newArr);
     }
 
 uniq(names, function(uniqArr){
@@ -109,11 +105,13 @@ uniq(names, function(uniqArr){
 
     //Code Here
 
-    function each (arr, cb) {
+    function each(arr, func) {
       for (var key in arr) {
-        cb(arr[key], key)
+        func(arr[key], key)
       }
+      
     }
+
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -125,11 +123,10 @@ each(names, function(item, indice){
 // and returns that user.
 
  //Code Here
-
- function getUserById (people, numId, cb) {
-   people.map( function(x) {
-     if (x.id === numId) {
-       return cb(x)
+ function getUserById (people, numid, cb) {
+   people.map( function(mk) {
+     if (mk.id === numid) {
+       return cb(mk);
      }
    });
  }

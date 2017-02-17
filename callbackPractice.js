@@ -93,10 +93,10 @@ contains(names, 'Colt', function(result){
     function uniq(arr, cb) {
       newArr = [];
       arr.map( function (x) {
-        if (newArr.indexOf[x] === -1)
+        if (newArr.indexOf(x) === -1)
         newArr.push(x);
       });
-        return newArr;
+        return cb(newArr);
     }
 
 uniq(names, function(uniqArr){
@@ -111,7 +111,7 @@ uniq(names, function(uniqArr){
 
     function each (arr, cb) {
       for (var key in arr) {
-        cb(arr[key], key)
+        return cb(arr[key], parseInt(key))
       }
     }
 
